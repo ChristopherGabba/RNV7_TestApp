@@ -11,11 +11,8 @@ import {
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { observer } from "mobx-react-lite" // @mst remove-current-line
 import * as Screens from "@/screens"
-import Config from "../config"
 import { useStores } from "../models" // @demo remove-current-line
 import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
-import { navigationRef, useBackButtonHandler } from "./navigationUtilities"
-import { useAppTheme, useThemeProvider } from "@/utils/useAppTheme"
 import { ComponentProps } from "react"
 
 /**
@@ -43,7 +40,6 @@ export type AppStackParamList = {
  * This is a list of all the route names that will exit the app if the back button
  * is pressed while in that screen. Only affects Android.
  */
-const exitRoutes = Config.exitRoutes
 
 export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStackScreenProps<
   AppStackParamList,
@@ -60,22 +56,14 @@ const AppStack = observer(function AppStack() {
     authenticationStore: { isAuthenticated },
   } = useStores()
   // @demo remove-block-end
-  const {
-    theme: { colors },
-  } = useAppTheme()
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        navigationBarColor: colors.background,
-        contentStyle: {
-          backgroundColor: colors.background,
-        },
       }}
       initialRouteName={isAuthenticated ? "Demo" : "Login"} // @demo remove-current-line
     >
-      {/* @demo remove-block-start */}
       {isAuthenticated ? (
         <>
           <Stack.Screen name="Demo" component={DemoNavigator} />
@@ -85,29 +73,18 @@ const AppStack = observer(function AppStack() {
           <Stack.Screen name="Login" component={Screens.LoginScreen} />
         </>
       )}
-      {/* @demo remove-block-end */}
-      {/** 🔥 Your screens go here */}
-      {/* IGNITE_GENERATOR_ANCHOR_APP_STACK_SCREENS */}
     </Stack.Navigator>
   )
-  // @mst replace-next-line }
 })
 
 export interface NavigationProps extends Partial<ComponentProps<typeof NavigationContainer>> {}
 
 // @mst replace-next-line export const AppNavigator = (props: NavigationProps) => {
-export const AppNavigator = observer(function AppNavigator(props: NavigationProps) {
-  const { themeScheme, navigationTheme, setThemeContextOverride, ThemeProvider } =
-    useThemeProvider()
-
-  useBackButtonHandler((routeName) => exitRoutes.includes(routeName))
-
+export const AppNavigator = observer(function AppNavigator() {
   return (
-    <ThemeProvider value={{ themeScheme, setThemeContextOverride }}>
-      <NavigationContainer ref={navigationRef} theme={navigationTheme} {...props}>
-        <AppStack />
-      </NavigationContainer>
-    </ThemeProvider>
+    <NavigationContainer>
+      <AppStack />
+    </NavigationContainer>
   )
   // @mst replace-next-line }
 })

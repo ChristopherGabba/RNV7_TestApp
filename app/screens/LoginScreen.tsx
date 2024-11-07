@@ -78,11 +78,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
       contentContainerStyle={themed($screenContentContainer)}
       safeAreaEdges={["top", "bottom"]}
     >
-      <Text testID="login-heading" tx="loginScreen:logIn" preset="heading" style={themed($logIn)} />
-      <Text tx="loginScreen:enterDetails" preset="subheading" style={themed($enterDetails)} />
-      {attemptsCount > 2 && (
-        <Text tx="loginScreen:hint" size="sm" weight="light" style={themed($hint)} />
-      )}
+      <Text testID="login-heading" text={"LoginScreen"} preset="heading" style={themed($logIn)} />
 
       <TextField
         value={authEmail}
@@ -92,7 +88,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoComplete="email"
         autoCorrect={false}
         keyboardType="email-address"
-        labelTx="loginScreen:emailFieldLabel"
+        label = "Email"
         placeholderTx="loginScreen:emailFieldPlaceholder"
         helper={error}
         status={error ? "error" : undefined}
@@ -108,7 +104,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
         autoComplete="password"
         autoCorrect={false}
         secureTextEntry={isAuthPasswordHidden}
-        labelTx="loginScreen:passwordFieldLabel"
+        label="Password"
         placeholderTx="loginScreen:passwordFieldPlaceholder"
         onSubmitEditing={login}
         RightAccessory={PasswordRightAccessory}
@@ -116,7 +112,7 @@ export const LoginScreen: FC<LoginScreenProps> = observer(function LoginScreen(_
 
       <Button
         testID="login-button"
-        tx="loginScreen:tapToLogIn"
+        text={"Login"}
         style={themed($tapButton)}
         preset="reversed"
         onPress={login}

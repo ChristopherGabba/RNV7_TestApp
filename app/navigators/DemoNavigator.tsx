@@ -4,18 +4,14 @@ import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
 import { translate } from "../i18n"
-import { DemoCommunityScreen, DemoShowroomScreen, DemoDebugScreen } from "../screens"
-import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
-import type { ThemedStyle } from "@/theme"
+import {  DemoShowroomScreen } from "../screens"
+import { colors, type ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
 import { useEffect } from "react"
 
 export type DemoTabParamList = {
-  DemoCommunity: undefined
   DemoShowroom: { queryIndex?: string; itemIndex?: string }
-  DemoDebug: undefined
-  DemoPodcastList: undefined
 }
 
 /**
@@ -38,97 +34,29 @@ const Tab = createBottomTabNavigator<DemoTabParamList>()
  * @returns {JSX.Element} The rendered `DemoNavigator`.
  */
 export function DemoNavigator() {
-  const { bottom } = useSafeAreaInsets()
-  const {
-    themed,
-    theme: { colors },
-  } = useAppTheme()
-
-  const isFocused = useIsFocused()
-
-  useEffect(() => {
-    ;(async function checkIfWeAreFocused() {
-      console.log("IS FOCUSED?", isFocused)
-      if(isFocused) {
-        console.log("FOCUSED SCREEN")
-      }
-    })()
-  }, [])
 
   return (
     <Tab.Navigator
       screenOptions={{
         headerShown: false,
         tabBarHideOnKeyboard: true,
-        tabBarStyle: themed([$tabBar, { height: bottom + 70 }]),
-        tabBarActiveTintColor: colors.text,
-        tabBarInactiveTintColor: colors.text,
-        tabBarLabelStyle: themed($tabBarLabel),
-        tabBarItemStyle: themed($tabBarItem),
+
       }}
     >
       <Tab.Screen
         name="DemoShowroom"
         component={DemoShowroomScreen}
         options={{
-          tabBarLabel: translate("demoNavigator:componentsTab"),
+          tabBarLabel: "First Tab",
           tabBarIcon: ({ focused }) => (
-            <Icon icon="components" color={focused ? colors.tint : colors.tintInactive} size={30} />
+            <Icon icon="components" color={colors.tint} size={30} />
           ),
         }}
       />
 
-      <Tab.Screen
-        name="DemoCommunity"
-        component={DemoCommunityScreen}
-        options={{
-          tabBarLabel: translate("demoNavigator:communityTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="community" color={focused ? colors.tint : colors.tintInactive} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoPodcastList"
-        component={DemoPodcastListScreen}
-        options={{
-          tabBarAccessibilityLabel: translate("demoNavigator:podcastListTab"),
-          tabBarLabel: translate("demoNavigator:podcastListTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="podcast" color={focused ? colors.tint : colors.tintInactive} size={30} />
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="DemoDebug"
-        component={DemoDebugScreen}
-        options={{
-          tabBarLabel: translate("demoNavigator:debugTab"),
-          tabBarIcon: ({ focused }) => (
-            <Icon icon="debug" color={focused ? colors.tint : colors.tintInactive} size={30} />
-          ),
-        }}
-      />
     </Tab.Navigator>
   )
 }
 
-const $tabBar: ThemedStyle<ViewStyle> = ({ colors }) => ({
-  backgroundColor: colors.background,
-  borderTopColor: colors.transparent,
-})
-
-const $tabBarItem: ThemedStyle<ViewStyle> = ({ spacing }) => ({
-  paddingTop: spacing.md,
-})
-
-const $tabBarLabel: ThemedStyle<TextStyle> = ({ colors, typography }) => ({
-  fontSize: 12,
-  fontFamily: typography.primary.medium,
-  lineHeight: 16,
-  color: colors.text,
-})
 
 // @demo remove-file
