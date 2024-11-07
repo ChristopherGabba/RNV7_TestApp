@@ -1,5 +1,5 @@
 import { BottomTabScreenProps, createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { CompositeScreenProps } from "@react-navigation/native"
+import { CompositeScreenProps, useIsFocused } from "@react-navigation/native"
 import { TextStyle, ViewStyle } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import { Icon } from "../components"
@@ -9,6 +9,7 @@ import { DemoPodcastListScreen } from "../screens/DemoPodcastListScreen"
 import type { ThemedStyle } from "@/theme"
 import { AppStackParamList, AppStackScreenProps } from "./AppNavigator"
 import { useAppTheme } from "@/utils/useAppTheme"
+import { useEffect } from "react"
 
 export type DemoTabParamList = {
   DemoCommunity: undefined
@@ -42,6 +43,17 @@ export function DemoNavigator() {
     themed,
     theme: { colors },
   } = useAppTheme()
+
+  const isFocused = useIsFocused()
+
+  useEffect(() => {
+    ;(async function checkIfWeAreFocused() {
+      console.log("IS FOCUSED?", isFocused)
+      if(isFocused) {
+        console.log("FOCUSED SCREEN")
+      }
+    })()
+  }, [])
 
   return (
     <Tab.Navigator
