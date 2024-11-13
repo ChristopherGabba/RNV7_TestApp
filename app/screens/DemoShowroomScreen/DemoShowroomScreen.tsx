@@ -1,30 +1,39 @@
-import { FC, useEffect } from "react"
-import { Button, Screen, Text } from "../../components"
-import { DemoTabScreenProps } from "../../navigators/DemoNavigator"
-import { $styles } from "@/theme"
-import { useStores } from "@/models"
+import { useEffect } from "react"
 import { useIsFocused } from "@react-navigation/native"
+import { SafeAreaView, Text, TouchableOpacity } from "react-native"
+import { useAuth } from "@/models/AuthContext"
 
-export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
-  function DemoShowroomScreen(_props) {
-    const { authenticationStore } = useStores()
+export const DemoShowroomScreen = () => {
+  const { logout } = useAuth()
 
-    const isFocused = useIsFocused()
+  const isFocused = useIsFocused()
 
-    useEffect(() => {
-      ;(async function checkIfWeAreFocused() {
-        console.log("IS FOCUSED?", isFocused)
-        if(isFocused) {
-          console.log("FOCUSED SCREEN")
-        }
-      })()
-    }, [])
+  useEffect(() => {
+    ;(async function checkIfWeAreFocused() {
+      console.log("IS FOCUSED?", isFocused)
+      if (isFocused) {
+        console.log("FOCUSED SCREEN")
+      }
+    })()
+  }, [])
 
-    return (
-      <Screen preset="fixed" safeAreaEdges={["top"]} contentContainerStyle={$styles.flex1}>
-        <Button text={"Log out"} onPress={() => authenticationStore.logout()} />
-      </Screen>
-    )
-  }
+  return (
+    <SafeAreaView style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <TouchableOpacity
+        style={{
+          marginTop: 50,
+          backgroundColor: "red",
+          justifyContent: "center",
+          alignItems: "center",
+          width: 200,
+          height: 50,
+        }}
+        onPress={() => logout()}
+      >
+        <Text>Logout</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
+  )
+}
 
 // @demo remove-file

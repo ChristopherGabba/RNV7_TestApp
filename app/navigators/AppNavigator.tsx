@@ -4,16 +4,11 @@
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
-import {
-  NavigationContainer,
-  NavigatorScreenParams, // @demo remove-current-line
-} from "@react-navigation/native"
+import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
-import { observer } from "mobx-react-lite" // @mst remove-current-line
 import * as Screens from "@/screens"
-import { useStores } from "../models" // @demo remove-current-line
-import { DemoNavigator, DemoTabParamList } from "./DemoNavigator" // @demo remove-current-line
 import { ComponentProps } from "react"
+import { useAuth } from "@/models/AuthContext"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -29,11 +24,8 @@ import { ComponentProps } from "react"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Welcome: undefined
-  Login: undefined // @demo remove-current-line
-  Demo: NavigatorScreenParams<DemoTabParamList> // @demo remove-current-line
-  // 🔥 Your screens go here
-  // IGNITE_GENERATOR_ANCHOR_APP_STACK_PARAM_LIST
+  Login: undefined
+  Demo: undefined
 }
 
 /**
@@ -50,41 +42,33 @@ export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStack
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
 // @mst replace-next-line const AppStack = () => {
-const AppStack = observer(function AppStack() {
-  // @demo remove-block-start
-  const {
-    authenticationStore: { isAuthenticated },
-  } = useStores()
-  // @demo remove-block-end
+const AppStack = function AppStack() {
+  const { authToken } = useAuth()
 
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={isAuthenticated ? "Demo" : "Login"} // @demo remove-current-line
+      initialRouteName={authToken ? "Demo" : "Login"}
     >
-      {isAuthenticated ? (
-        <>
-          <Stack.Screen name="Demo" component={DemoNavigator} />
-        </>
+      {authToken ? (
+        <Stack.Screen name="Demo" component={Screens.DemoShowroomScreen} />
       ) : (
-        <>
-          <Stack.Screen name="Login" component={Screens.LoginScreen} />
-        </>
+        <Stack.Screen name="Login" component={Screens.LoginScreen} />
       )}
     </Stack.Navigator>
   )
-})
+}
 
 export interface NavigationProps extends Partial<ComponentProps<typeof NavigationContainer>> {}
 
 // @mst replace-next-line export const AppNavigator = (props: NavigationProps) => {
-export const AppNavigator = observer(function AppNavigator() {
+export const AppNavigator = () => {
   return (
     <NavigationContainer>
       <AppStack />
     </NavigationContainer>
   )
   // @mst replace-next-line }
-})
+}
