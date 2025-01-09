@@ -6,9 +6,8 @@
  */
 import { NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
-import * as Screens from "@/screens"
 import { ComponentProps } from "react"
-import { useAuth } from "@/models/AuthContext"
+import { DemoNavigator } from "./DemoNavigator"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -24,8 +23,7 @@ import { useAuth } from "@/models/AuthContext"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Login: undefined
-  Demo: undefined
+  DemoNavigator: undefined
 }
 
 /**
@@ -43,20 +41,13 @@ const Stack = createNativeStackNavigator<AppStackParamList>()
 
 // @mst replace-next-line const AppStack = () => {
 const AppStack = function AppStack() {
-  const { authToken } = useAuth()
-
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
-      initialRouteName={authToken ? "Demo" : "Login"}
     >
-      {authToken ? (
-        <Stack.Screen name="Demo" component={Screens.DemoShowroomScreen} />
-      ) : (
-        <Stack.Screen name="Login" component={Screens.LoginScreen} />
-      )}
+      <Stack.Screen name="DemoNavigator" component={DemoNavigator} />
     </Stack.Navigator>
   )
 }

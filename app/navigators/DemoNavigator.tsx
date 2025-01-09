@@ -1,8 +1,10 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
-import { DemoShowroomScreen } from "../screens/DemoShowroomScreen/DemoShowroomScreen"
+
+import { UploadScreen, WatchAndDeleteScreen } from "@/screens"
 
 export type DemoTabParamList = {
-  DemoShowroom: undefined
+  Upload: undefined
+  WatchAndDelete: undefined
   // Add other tab screens here
 }
 
@@ -11,12 +13,10 @@ const Tab = createBottomTabNavigator<DemoTabParamList>()
 export function DemoNavigator() {
   return (
     <Tab.Navigator
-      // Don't set initialRouteName here unless you're sure you want to override the default
-      screenOptions={{
-        headerShown: false,
-      }}
+    // Don't set initialRouteName here unless you're sure you want to override the default
     >
-      <Tab.Screen name="DemoShowroom" component={DemoShowroomScreen} />
+      <Tab.Screen name="Upload" component={UploadScreen} />
+      <Tab.Screen name="WatchAndDelete" component={WatchAndDeleteScreen} />
       {/* Add other tab screens here */}
     </Tab.Navigator>
   )

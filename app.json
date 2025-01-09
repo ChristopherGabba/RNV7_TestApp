@@ -4,7 +4,7 @@
   "expo": {
     "name": "RNV7_Test_App",
     "slug": "RNV7_Test_App",
-    "scheme": "rnv7_test_app",
+    "scheme": "rnv7testapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
@@ -72,7 +72,14 @@
           }
         }
       ], 
-      "expo-font"
+      "expo-font",
+      "expo-video",
+      ["expo-image-picker",
+      {
+        "photosPermission": "The app accesses your photos to let you upload to S3"
+      }
+    ],      
+    "react-native-compressor",
     ],
     "experiments": {
       "tsconfigPaths": true

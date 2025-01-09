@@ -1,8 +1,7 @@
-
 import { initialWindowMetrics, SafeAreaProvider } from "react-native-safe-area-context" // @mst remove-current-line
 import { AppNavigator } from "./navigators"
-import { AuthProvider } from "./models/AuthContext"
 import { useEffect } from "react"
+import { Authenticator } from "@aws-amplify/ui-react-native"
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
 
@@ -30,9 +29,11 @@ function App(props: AppProps) {
   // otherwise, we're ready to render the app
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      <AuthProvider>
-        <AppNavigator />
-      </AuthProvider>
+      <Authenticator.Provider>
+        <Authenticator>
+          <AppNavigator />
+        </Authenticator>
+      </Authenticator.Provider>
     </SafeAreaProvider>
   )
 }
