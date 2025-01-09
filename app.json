@@ -79,7 +79,7 @@
         "photosPermission": "The app accesses your photos to let you upload to S3"
       }
     ],      
-    "react-native-compressor",
+    "react-native-compressor"
     ],
     "experiments": {
       "tsconfigPaths": true
