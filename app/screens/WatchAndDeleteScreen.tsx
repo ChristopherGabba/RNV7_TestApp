@@ -1,7 +1,6 @@
 import { SafeAreaView, Text, TextStyle, TouchableOpacity, ViewStyle } from "react-native"
-import * as ImagePicker from "expo-image-picker"
 import { useEffect, useRef, useState } from "react"
-import { useVideoPlayer, VideoView, createVideoPlayer, VideoPlayer } from "expo-video"
+import { useVideoPlayer, VideoView, } from "expo-video"
 import { getUrl, list, remove } from "aws-amplify/storage"
 
 export const WatchAndDeleteScreen = () => {
@@ -41,11 +40,12 @@ export const WatchAndDeleteScreen = () => {
     console.log("Deleting video")
     try {
       const deleteTarget = s3Paths[currentIndex.current]
-      const response = remove({ path: deleteTarget })
+      await remove({ path: deleteTarget })
       setS3Paths((prevArray) => prevArray.filter((item) => item !== deleteTarget))
       setEncodedUris((prevArray) =>
         prevArray.filter((item) => item !== encodedUris[currentIndex.current]),
       )
+      currentIndex.current = 0
     } catch (error) {
       console.log("Error deleting files")
     }
@@ -62,8 +62,9 @@ export const WatchAndDeleteScreen = () => {
 
   useEffect(() => {
     const subscription = player.addListener("statusChange", ({ status, error }) => {
-      if (status === "error") {
-        console.error("Player status changed: ", status)
+      if (status === "error" && !!encodedUris) {
+        console.log("Video Player Error:" + JSON.stringify(error, null, 4))
+        // alert("Video Player Error:" + JSON.stringify(error, null, 4))
       }
     })
 
@@ -77,8 +78,11 @@ export const WatchAndDeleteScreen = () => {
       <TouchableOpacity style={$genericButton} onPress={fetchFilesFromS3}>
         <Text style={{ color: "white", textAlign: "center" }}>Fetch files from S3</Text>
       </TouchableOpacity>
-
-      <VideoView player={player} style={$videoPreview} />
+      {!s3Paths ? (
+        <Text style={{ color: "black", textAlign: "center" }}>No files detected in S3</Text>
+      ) : (
+        <VideoView player={player} style={$videoPreview} />
+      )}
 
       <TouchableOpacity style={$genericButton} onPress={goToNextFile}>
         <Text style={{ color: "white", textAlign: "center" }}>Go To Next Video</Text>
@@ -103,5 +107,6 @@ const $genericButton: TextStyle = {
 const $videoPreview: ViewStyle = {
   width: 400,
   height: 300,
+  backgroundColor: "gray",
 }
 // @demo remove-file

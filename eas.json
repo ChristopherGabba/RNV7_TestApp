@@ -5,27 +5,35 @@
   "build": {
     "development": {
       "extends": "production",
+      "node": "22.7.0",
       "distribution": "internal",
       "android": {
         "gradleCommand": ":app:assembleDebug"
       },
       "ios": {
         "buildConfiguration": "Debug",
+        "deploymentTarget": "14.0",
         "simulator": true
       }
     },
     "development:device": {
       "extends": "development",
+      "node": "22.7.0",
       "distribution": "internal",
       "ios": {
         "buildConfiguration": "Debug",
+        "deploymentTarget": "14.0",
         "simulator": false
       }
     },
     "preview": {
       "extends": "production",
+      "node": "22.7.0",
       "distribution": "internal",
-      "ios": { "simulator": true },
+      "ios": { 
+       "simulator": true,     
+       "deploymentTarget": "14.0"
+      },
       "android": { "buildType": "apk" }
     },
     "preview:device": {

@@ -6,7 +6,7 @@ import { Authenticator } from "@aws-amplify/ui-react-native"
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
 
 interface AppProps {
-  hideSplashScreen: () => Promise<boolean>
+  hideSplashScreen: () => Promise<void>
 }
 
 /**
