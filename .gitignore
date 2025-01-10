@@ -87,6 +87,9 @@ web-build/
 
 /coverage
 
+# amplify
+.amplify/*
+
 # Yarn
 .yarn/*
 
