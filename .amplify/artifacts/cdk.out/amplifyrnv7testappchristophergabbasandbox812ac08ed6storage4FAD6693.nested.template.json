@@ -246,10 +246,215 @@
     "aws:asset:property": "Code"
    }
   },
+  "TESTSTORAGEFORCOMPRESSORBUGBUCKETNAMEParameter7E49F4BD": {
+   "Type": "AWS::SSM::Parameter",
+   "Properties": {
+    "Name": "/amplify/resource_reference/rnv7testapp/christophergabba-sandbox-812ac08ed6/TEST_STORAGE_FOR_COMPRESSOR_BUG_BUCKET_NAME",
+    "Tags": {
+     "amplify:deployment-type": "sandbox",
+     "created-by": "amplify"
+    },
+    "Type": "String",
+    "Value": {
+     "Ref": "testStorageForCompressorBugBucketCF5221C2"
+    }
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/TEST_STORAGE_FOR_COMPRESSOR_BUG_BUCKET_NAMEParameter/Resource"
+   }
+  },
+  "storageAccess472A5D2AC": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:GetObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "s3:ListBucket",
+       "Condition": {
+        "StringLike": {
+         "s3:prefix": [
+          "public/*",
+          "public/"
+         ]
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "testStorageForCompressorBugBucketCF5221C2",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "s3:DeleteObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "s3:PutObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "storageAccess472A5D2AC",
+    "Roles": [
+     {
+      "Ref": "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/storageAccess4/Resource"
+   }
+  },
+  "storageAccess524979CAB": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:GetObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "s3:ListBucket",
+       "Condition": {
+        "StringLike": {
+         "s3:prefix": [
+          "public/*",
+          "public/"
+         ]
+        }
+       },
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "testStorageForCompressorBugBucketCF5221C2",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "s3:PutObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      },
+      {
+       "Action": "s3:DeleteObject",
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "testStorageForCompressorBugBucketCF5221C2",
+            "Arn"
+           ]
+          },
+          "/public/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "storageAccess524979CAB",
+    "Roles": [
+     {
+      "Ref": "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/storageAccess5/Resource"
+   }
+  },
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12Kyw6CMBBFv4V9qfJIXAtrDYEPMLUdyPBoCTOFGMK/G8VE4+qee++JZXRKZRSohUJturDHu1yvQAymYqU7oRa6USLXzOsOWOS1/dAehetRP77z3jeRe2I3lEDOTxpe/y9f1Diibf6sYnIzGpgyRSDORMAVq+bt1TZ31iCjs5uwzoBs6TDHiUzlMWgJMZy8ZRxAlns+ATQCy+PYAAAA"
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12LS67CMAxF18I8NX8xho7fU0UXgExiKlOSoNgFoah7R1AEiNH9nTuD6WoJkxFepbCuLU68h/xPouRqRdsavMouyxzyprMtqSkP4eUGqeKJ7e1TD7k3Ih5yrYlDU2FCT0rpQb1Dbxg95M//9exN2YlGvyWJXbL0mL79H57PHJofqkrxwo7SBoXMWoS0Vmye3CGUMThWjqE3ITqCo4wvszksYDI6CnORuqDsCbaD3gHsDrHGFAEAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/CDKMetadata/Default"
@@ -645,6 +850,14 @@
      ]
     }
    ]
+  }
+ },
+ "Parameters": {
+  "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref": {
+   "Type": "String"
+  },
+  "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref": {
+   "Type": "String"
   }
  },
  "Outputs": {

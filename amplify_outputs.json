@@ -121,7 +121,23 @@
       {
         "name": "testStorageForCompressorBug",
         "bucket_name": "amplify-rnv7testapp-chris-teststorageforcompressor-a4ieit6cgheu",
-        "aws_region": "us-east-1"
+        "aws_region": "us-east-1",
+        "paths": {
+          "public/*": {
+            "guest": [
+              "get",
+              "list",
+              "delete",
+              "write"
+            ],
+            "authenticated": [
+              "get",
+              "list",
+              "write",
+              "delete"
+            ]
+          }
+        }
       }
     ]
   },

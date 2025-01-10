@@ -246,7 +246,7 @@
       {
        "Ref": "AWS::Region"
       },
-      "\\\"}\"]"
+      "\\\",\\\"paths\\\":{\\\"public/*\\\":{\\\"guest\\\":[\\\"get\\\",\\\"list\\\",\\\"delete\\\",\\\"write\\\"],\\\"authenticated\\\":[\\\"get\\\",\\\"list\\\",\\\"write\\\",\\\"delete\\\"]}}}\"]"
      ]
     ]
    }
@@ -282,7 +282,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/964a85c762125c72517811081f12659037d0a5186c8bc90b0debf1548bf48c84.json"
+       "/b09d9be015142941e42e0f659be8d3b7513555052e19b574d6785115f829f7f0.json"
       ]
      ]
     }
@@ -350,7 +350,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/66f363cacebd48c5e7b69092527bf78e7927ffc23bd79177f5a70d2393720916.json"
+       "/ae2fd93089c82ad487c2d6509ab2ecf2e9ca72c3bd309854f323ccb52a6c0d7c.json"
       ]
      ]
     }
@@ -366,6 +366,20 @@
   "storage0EC3F24A": {
    "Type": "AWS::CloudFormation::Stack",
    "Properties": {
+    "Parameters": {
+     "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref": {
+      "Fn::GetAtt": [
+       "auth179371D7",
+       "Outputs.amplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref"
+      ]
+     },
+     "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref": {
+      "Fn::GetAtt": [
+       "auth179371D7",
+       "Outputs.amplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref"
+      ]
+     }
+    },
     "Tags": [
      {
       "Key": "amplify:deployment-type",
@@ -392,7 +406,7 @@
        {
         "Fn::Sub": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}"
        },
-       "/a9c61278d2f9aaa38cc10eca19a18d25bacf1c62c07e96698b7239d7ab65495b.json"
+       "/ef0079f651d5e5200f1e1edfa3605fdfe1b1e623058141fc9960648ef8c185f7.json"
       ]
      ]
     }
@@ -408,7 +422,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzQ30TNUTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGx4EJBqcX5pUXJqSC2c35eSmZJZn5erU5efkqqXlaxfpmRsZ6JnoFiVnFmpm5RaV5JZm6qXhCEBgBv0DQZbAAAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/zPSMzQ31TNQTCwv1k1OydbNyUzSqw4uSUzO1nFOy/MvLSkoLQGx4EJBqcX5pUXJqSC2c35eSmZJZn5erU5efkqqXlaxfpmRsZ6JnoFiVnFmpm5RaV5JZm6qXhCEBgDP9mKjbAAAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/CDKMetadata/Default"

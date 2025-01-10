@@ -22,7 +22,7 @@
         "validateOnSynth": false,
         "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-deploy-role-${AWS::AccountId}-${AWS::Region}",
         "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-cfn-exec-role-${AWS::AccountId}-${AWS::Region}",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/c2f25c0f63e3d6dfd3e890036a23c067168c6335f9c930bab771bd970a074625.json",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}/1d7685258ec213abeec369479fccd15b22e72c5afbfe2aaee3b124d4bf389d9d.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
@@ -1219,6 +1219,24 @@
             "data": "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F"
           }
         ],
+        "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/TEST_STORAGE_FOR_COMPRESSOR_BUG_BUCKET_NAMEParameter/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TESTSTORAGEFORCOMPRESSORBUGBUCKETNAMEParameter7E49F4BD"
+          }
+        ],
+        "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/storageAccess4/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storageAccess472A5D2AC"
+          }
+        ],
+        "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/storageAccess5/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "storageAccess524979CAB"
+          }
+        ],
         "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/CDKMetadata/Default": [
           {
             "type": "aws:cdk:logicalId",
@@ -1229,6 +1247,18 @@
           {
             "type": "aws:cdk:logicalId",
             "data": "CDKMetadataAvailable"
+          }
+        ],
+        "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/reference-to-amplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputs.amplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthunauthenticatedUserRole83409E84Ref"
+          }
+        ],
+        "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/reference-to-amplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputs.amplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "referencetoamplifyrnv7testappchristophergabbasandbox812ac08ed6authNestedStackauthNestedStackResource2334A048Outputsamplifyrnv7testappchristophergabbasandbox812ac08ed6authamplifyAuthauthenticatedUserRole700E97C7Ref"
           }
         ],
         "/amplify-rnv7testapp-christophergabba-sandbox-812ac08ed6/storage/amplifyrnv7testappchristophergabbasandbox812ac08ed6storagetestStorageForCompressorBugBucket946997E5Ref": [
