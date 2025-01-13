@@ -4,10 +4,12 @@
  * Generally speaking, it will contain an auth flow (registration, login, forgot password)
  * and a "main" flow which the user will use once logged in.
  */
-import { NavigationContainer } from "@react-navigation/native"
+import { createNavigationContainerRef, NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { ComponentProps } from "react"
 import { DemoNavigator } from "./DemoNavigator"
+import { ModalScreen } from "@/screens"
+import { usePushNotifications } from "@/helpers/helpers/usePushNotifications"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -23,7 +25,8 @@ import { DemoNavigator } from "./DemoNavigator"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  DemoNavigator: undefined
+  Modal: undefined
+  Demo: undefined
 }
 
 /**
@@ -36,18 +39,31 @@ export type AppStackScreenProps<T extends keyof AppStackParamList> = NativeStack
   T
 >
 
+export const navigationRef = createNavigationContainerRef<AppStackParamList>()
+
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
 // @mst replace-next-line const AppStack = () => {
 const AppStack = function AppStack() {
+
+  usePushNotifications()
+
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
       }}
     >
-      <Stack.Screen name="DemoNavigator" component={DemoNavigator} />
+      <Stack.Screen name="Demo" component={DemoNavigator} />
+      <Stack.Screen
+        name="Modal"
+        component={ModalScreen}
+        options={{
+          presentation: "transparentModal",
+          animation: "fade",
+        }}
+      />
     </Stack.Navigator>
   )
 }
@@ -55,9 +71,10 @@ const AppStack = function AppStack() {
 export interface NavigationProps extends Partial<ComponentProps<typeof NavigationContainer>> {}
 
 // @mst replace-next-line export const AppNavigator = (props: NavigationProps) => {
-export const AppNavigator = () => {
+export const AppNavigator = (props: NavigationProps) => {
+
   return (
-    <NavigationContainer>
+    <NavigationContainer ref={navigationRef} linking={props.linking}>
       <AppStack />
     </NavigationContainer>
   )

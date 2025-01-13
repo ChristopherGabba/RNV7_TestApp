@@ -1,3 +1,4 @@
 
-export * from "./UploadScreen"
-export * from "./WatchAndDeleteScreen"
+export * from "./FirstTabScreen"
+export * from "./SecondTabScreen"
+export * from "./ModalScreen"

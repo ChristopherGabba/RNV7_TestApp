@@ -12,7 +12,6 @@
       },
       "ios": {
         "buildConfiguration": "Debug",
-        "deploymentTarget": "14.0",
         "simulator": true
       }
     },
@@ -22,7 +21,6 @@
       "distribution": "internal",
       "ios": {
         "buildConfiguration": "Debug",
-        "deploymentTarget": "14.0",
         "simulator": false
       }
     },
@@ -31,8 +29,7 @@
       "node": "22.7.0",
       "distribution": "internal",
       "ios": { 
-       "simulator": true,     
-       "deploymentTarget": "14.0"
+       "simulator": true    
       },
       "android": { "buildType": "apk" }
     },
