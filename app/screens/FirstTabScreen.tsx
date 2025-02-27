@@ -15,7 +15,7 @@ export const FirstTabScreen = () => {
         style={{
           width: 200,
           height: 45,
-          backgroundColor: "green",
+          backgroundColor: "orange",
           justifyContent: "center",
           alignItems: "center",
         }}
