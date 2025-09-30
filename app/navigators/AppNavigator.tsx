@@ -7,8 +7,7 @@
 import { createNavigationContainerRef, NavigationContainer } from "@react-navigation/native"
 import { createNativeStackNavigator, NativeStackScreenProps } from "@react-navigation/native-stack"
 import { ComponentProps } from "react"
-import { DemoNavigator } from "./DemoNavigator"
-import { ModalScreen } from "@/screens"
+import { TabNavigator } from "./TabNavigator"
 import { usePushNotifications } from "@/helpers/helpers/usePushNotifications"
 
 /**
@@ -25,8 +24,7 @@ import { usePushNotifications } from "@/helpers/helpers/usePushNotifications"
  *   https://reactnavigation.org/docs/typescript/#organizing-types
  */
 export type AppStackParamList = {
-  Modal: undefined
-  Demo: undefined
+  Tab: undefined
 }
 
 /**
@@ -55,15 +53,7 @@ const AppStack = function AppStack() {
         headerShown: false,
       }}
     >
-      <Stack.Screen name="Demo" component={DemoNavigator} />
-      <Stack.Screen
-        name="Modal"
-        component={ModalScreen}
-        options={{
-          presentation: "transparentModal",
-          animation: "fade",
-        }}
-      />
+      <Stack.Screen name="Tab" component={TabNavigator} />
     </Stack.Navigator>
   )
 }

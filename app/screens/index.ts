@@ -1,4 +1,3 @@
 
-export * from "./FirstTabScreen"
-export * from "./SecondTabScreen"
-export * from "./ModalScreen"
+export * from "./RefreshControlTintColorScreen"
+export * from "./RefreshControlStuckScreen"

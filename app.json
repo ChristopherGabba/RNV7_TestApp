@@ -7,12 +7,13 @@
     "scheme": "rnv7testapp",
     "version": "1.0.0",
     "orientation": "portrait",
+    "newArchEnabled": true,
     "userInterfaceStyle": "automatic",
     "icon": "./assets/images/app-icon-all.png",
     "extra": {
       "eas": {
         "projectId": "999498d5-adda-4ed6-8555-ce5634969273"
-       }
+      }
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -32,7 +33,8 @@
     "ios": {
       "icon": "./assets/images/app-icon-ios.png",
       "supportsTablet": true,
-      "bundleIdentifier": "com.rnv7testapp"
+      "bundleIdentifier": "com.rnv7testapp",
+      "appleTeamId": "32U9AXHQSK"
     },
     "web": {
       "favicon": "./assets/images/app-icon-web-favicon.png",
@@ -45,17 +47,6 @@
     },
     "plugins": [
       "expo-localization",
-      [
-        "expo-build-properties",
-        {
-          "ios": {
-            "newArchEnabled": false
-          },
-          "android": {
-            "newArchEnabled": false
-          }
-        }
-      ], 
       "expo-font",
       [
         "expo-splash-screen",

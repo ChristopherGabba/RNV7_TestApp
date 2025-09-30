@@ -14,11 +14,10 @@ const config: {
   screens: {
     Demo: {
       screens: {
-        FirstTab: "firsttab",
-        SecondTab: "secondtab",
+        FirstTab: "refreshcontroltintcolor",
+        SecondTab: "refreshcontrolstuck",
       },
     },
-    Modal: "modal",
   },
 }
 const linking: LinkingOptions<NonNullable<unknown>> = {

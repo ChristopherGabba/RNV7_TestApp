@@ -1,3 +1,3 @@
 export * from "./AppNavigator"
-export * from "./DemoNavigator"
+export * from "./TabNavigator"
 // export other navigators from here
